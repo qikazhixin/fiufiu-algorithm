@@ -1,4 +1,4 @@
-package org.fiufiu.chapter1.program.model;
+package org.fiufiu.chapter1.program.model.chapter1;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdIn;

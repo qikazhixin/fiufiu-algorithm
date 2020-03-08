@@ -1,4 +1,4 @@
-package org.fiufiu.chapter1.program.model;
+package org.fiufiu.chapter1.program.model.chapter1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
