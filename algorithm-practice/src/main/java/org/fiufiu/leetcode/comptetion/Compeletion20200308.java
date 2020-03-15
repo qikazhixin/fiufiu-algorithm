@@ -1,4 +1,4 @@
-package org.fiufiu.leetcode;
+package org.fiufiu.leetcode.comptetion;
 
 /**
  * @author Like Liu
