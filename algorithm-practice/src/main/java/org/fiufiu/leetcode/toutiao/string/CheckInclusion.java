@@ -1,5 +1,11 @@
 package org.fiufiu.leetcode.toutiao.string;
 
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author Like Liu
  * @description
@@ -15,38 +21,14 @@ public class CheckInclusion {
         System.out.println(test.checkInclusion(s1, s2));
     }
 
+    @Test
+    public void test() {
+        String s1= "ab", s2 = "eidboaboo";
+        Assert.assertTrue(checkInclusion(s1, s2));
+    }
+
     public boolean checkInclusion(String s1, String s2) {
-        int[] ints = new int[26];
 
-        for (int i=0;i<s1.length();i++) {
-            ints[s1.charAt(i)-97]++;
-        }
-
-        for (int i=0;i<s2.length();) {
-            char c = s2.charAt(i);
-            if (ints[c-97] == 0) {
-                i++;
-            } else if(i) {
-
-            } else {
-                int[] tmp=ints.clone();
-                int count=s1.length()-1;
-                tmp[c-97]--;
-                while(count>0) {
-                    i++;
-                    if (tmp[s2.charAt(i)-97] != 0) {
-                        tmp[s2.charAt(i)-97]--;
-                        count--;
-                        continue;
-                    } else {
-                        break;
-                    }
-                }
-                if (count==0) {
-                    return true;
-                }
-            }
-        }
 
         return false;
     }

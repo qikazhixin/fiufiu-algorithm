@@ -18,22 +18,28 @@ public class IsValidBST {
         if (root==null) {
             return true;
         }
-        return isValidBST(root.left, root.val, true)
-                &&isValidBST(root.right, root.val, false);
+        return isValidBST(root, null, null);
     }
 
-    public boolean isValidBST(TreeNode node, int last, boolean le) {
+    public boolean isValidBST(TreeNode node, Integer less, Integer biger) {
         if (node==null) {
             return true;
         }
-        boolean b;
-        if (le) {
-            b=node.val<last;
-        } else {
-            b=node.val>last;
+        //左入
+        boolean b=true;
+        if (less != null) {
+            b=b&&node.val>less;
         }
-
-        return b&&isValidBST(node.left, node.val, true)
-                &&isValidBST(node.right, node.val, false);
+        if (biger!=null) {
+            b=b&&node.val<biger;
+        }
+        if (!b) {
+            return false;
+        }
+        return isValidBST(node.left, less, node.val)&&isValidBST(node.right, node.val, biger);
     }
+
+    //2.迭代
+
+    //3.中序遍历
 }
