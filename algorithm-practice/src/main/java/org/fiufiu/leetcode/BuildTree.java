@@ -1,36 +1,38 @@
 package org.fiufiu.leetcode;
 
 import org.fiufiu.leetcode.bo.TreeNode;
+import org.junit.Test;
 
 public class BuildTree {
 
+    @Test
+    public void test() {
+//        preorder = [3,9,20,15,7]
+//        中序遍历 inorder = [9,3,15,20,7]
+        TreeNode treeNode = buildTree(new int[]{3, 9, 20, 15, 7}, new int[]{9, 3, 15, 20, 7});
+        System.out.println();
+    }
+
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        /*TreeNode root = new TreeNode(preorder[0]);
-
-        int index=1;
-
-        TreeNode tmp = root;
-        while(preorder[index]!=inorder[0]) {
-            TreeNode left = new TreeNode(preorder[index]);
-            tmp.left = left;
-            left.right = tmp;
-            tmp=tmp.left;
-            index++;
+        this.preorder = preorder;
+        return buildTree(inorder, 0, preorder.length - 1);
+    }
+    int[] preorder;
+    int index=0;
+    private TreeNode buildTree(int [] ori, int left, int right) {
+        if (left>right) {
+            return null;
         }
-        TreeNode left = new TreeNode(preorder[index]);
-        int i1=1;
-        while(inorder[i1] != preorder[0]) {
-            if (inorder[i1] == tmp.val) {
-                if (tmp.right.val == inorder[i1++]) {
-                    tmp=tmp.right;
-                } else {
-                    TreeNode tmp1=tmp;
-                    tmp = tmp.right;
-                    tmp1.right = new TreeNode(inorder[i1++]);
-                }
+        TreeNode treeNode = new TreeNode(preorder[index]);
+        int i = left;
+        for (; i <= right ; i++) {
+            if (ori[i]==preorder[index]) {
+                break;
             }
-        }*/
-
-
+        }
+        index++;
+        treeNode.left = buildTree(ori, left, i-1);
+        treeNode.right = buildTree(ori, i+1, right);
+        return treeNode;
     }
 }
