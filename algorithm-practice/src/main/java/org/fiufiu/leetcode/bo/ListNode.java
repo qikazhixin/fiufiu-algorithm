@@ -22,10 +22,11 @@ public class ListNode {
         StringBuilder builder = new StringBuilder();
         builder.append("[");
         ListNode tmp=this;
-        while(tmp.next!=null) {
+        while(tmp!=null) {
             builder.append(tmp.val).append(",");
+            tmp=tmp.next;
         }
-        builder.append(tmp.val).append("]");
+        builder.append("]");
         return builder.toString();
     }
 }
