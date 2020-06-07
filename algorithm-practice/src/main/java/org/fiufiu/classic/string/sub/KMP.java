@@ -1,10 +1,10 @@
-package org.fiufiu.classic.string;
+package org.fiufiu.classic.string.sub;
 
 import org.junit.Test;
 
 import java.util.Arrays;
 
-public class KMP implements StringMatcher{
+public class KMP implements StringMatcher {
 
     @Test
     public void testGetNext() {

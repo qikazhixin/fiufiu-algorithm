@@ -17,6 +17,66 @@ public class NumAndString4 {
 //        Assert.assertEquals(-2147483648, myAtoi("-91283472332"));
     }
 
+    @Test
+    public void test1() {
+//        Assert.assertEquals(42, myAtoi1("42"));
+//        Assert.assertEquals(-42, myAtoi1("     -42"));
+        Assert.assertEquals(4193, myAtoi1("4193 with words"));
+        Assert.assertEquals(0, myAtoi1("words and 987"));
+        Assert.assertEquals(-2147483648, myAtoi1("-91283472332"));
+    }
+
+    //状态机
+    public int myAtoi2(String str) {
+
+
+
+        return 0;
+    }
+
+
+
+    //java
+    public int myAtoi1(String str) {
+        boolean flag = true;
+        int ans = 0;
+        int i=0;
+        int sign = 1;
+        //先去除空格
+        while (i<str.length()&&str.charAt(i) == ' ') {
+            i++;
+        }
+        //在找符号位
+        if (i>=str.length()) {
+            return ans;
+        } else {
+            char c = str.charAt(i);
+            if (c =='-') {
+                sign = -1;
+                i++;
+            } else if (c == '+') {
+                i++;
+            } else if (c<'1'||c>'9') {
+                return ans;
+            }
+
+        }
+        //转换
+        while(i<str.length()) {
+            //即将越界
+            char c = str.charAt(i);
+            if (c<'0'||c>'9') {
+                break;
+            }
+            if (ans>Integer.MAX_VALUE/10||(ans==Integer.MAX_VALUE/10&&c>'7')) {
+                return sign>0?Integer.MAX_VALUE:Integer.MIN_VALUE;
+            }
+            ans=ans*10+(str.charAt(i++)-'0');
+        }
+        return ans*sign;
+    }
+
+    //几乎纯暴力；试试官网的方法
     public int myAtoi(String str) {
         //首先是获得数字
         //想法是正则或是自己写
@@ -30,6 +90,7 @@ public class NumAndString4 {
         //先用正则小试牛刀，顺便看看自己正则用的咋样；
 //        String reg = "^\\s*[\\-]?[1-9]?[0-9]*";
         String reg = "^[\\-]?[1-9]+[0-9]*";
+//        Pattern pattern = new Pattern();
         Pattern compile = Pattern.compile(reg);
         Matcher matcher = compile.matcher(str.trim());
         String num = null;

@@ -1,4 +1,4 @@
-package org.fiufiu.classic.string;
+package org.fiufiu.classic.string.sub;
 
 import org.junit.Test;
 
