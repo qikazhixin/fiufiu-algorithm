@@ -15,6 +15,7 @@ public class SortAndSearch1 {
 
     public ListNode sortList(ListNode head) {
         //自底向上的归并，没写出来；明天试试快慢指针+自顶向下归并
+
         int i=1;
         int len = 0;
         ListNode tmp = head;
